@@ -1,11 +1,11 @@
 package utils
 
 import (
-    "encoding/json"
+  "encoding/json"
 )
 
 func RespondWithJson(payload interface{}) (string, error) {
-    response, err := json.Marshal(payload)
+  response, err := json.Marshal(payload)
 
-    return string(response), err
+  return string(response), err
 }

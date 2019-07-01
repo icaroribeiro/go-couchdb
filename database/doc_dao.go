@@ -1,67 +1,67 @@
 package database
 
 import (
-	"../models"
+  "../models"
 )
 
 func CreateDocument(doc models.Document) (error) {
-	_, _, err := couchdb.Post(doc)
+  _, _, err := couchdb.Post(doc)
 
-	return err
+  return err
 }
 
 func GetDocuments() (models.AllDocuments, error) {
-	var docs models.AllDocuments
+  var docs models.AllDocuments
 
-	err := couchdb.AllDocs(&docs, nil)
+  err := couchdb.AllDocs(&docs, nil)
 
-	if err != nil {
-    	return docs, err
-    }
+  if err != nil {
+    return docs, err
+  }
 
-	return docs, nil
+  return docs, nil
 }
 
 func GetDocumentById(id string) (models.Document, error) {
-	var doc models.Document
+  var doc models.Document
 
-	err := couchdb.Get(id, &doc, nil)
+  err := couchdb.Get(id, &doc, nil)
 
-	if err != nil {
-    	return doc, err
-    }
+  if err != nil {
+    return doc, err
+  }
 
-	return doc, nil
+  return doc, nil
 }
 
 func UpdateDocument(id string, doc models.Document) error {
-	rev, err := couchdb.Rev(id)
+  rev, err := couchdb.Rev(id)
 
-	if err != nil {
-    	return err
-    }
+  if err != nil {
+    return err
+  }
 
-	_, err = couchdb.Put(id, doc, rev)
+  _, err = couchdb.Put(id, doc, rev)
 
-	if err != nil {
-    	return err
-    }
+  if err != nil {
+    return err
+  }
 
-    return nil
+  return nil
 }
 
 func DeleteDocument(id string) error {
-	rev, err := couchdb.Rev(id)
+  rev, err := couchdb.Rev(id)
 
-	if err != nil {
-    	return err
-    }
+  if err != nil {
+    return err
+  }
 
-	_, err = couchdb.Delete(id, rev)
+  _, err = couchdb.Delete(id, rev)
 
-	if err != nil {
-    	return err
-    }
+  if err != nil {
+    return err
+  }
 
-    return nil
+  return nil
 }
