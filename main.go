@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-    err := database.EstablishConnection()
+  err := database.EstablishConnection()
 
   if err != nil {
     log.Fatal("Error while establishing database connection: ", err)
