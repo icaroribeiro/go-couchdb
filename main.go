@@ -16,11 +16,8 @@ func init() {
 }
 
 func main() {
-  //var id string
-  //id = "5b269f93d4f487ed90ed93673203472d"
-
   var name string
-  name = "Doc 15"
+  name = "Doc 7"
 
   var doc = models.Document{ 
       Name: name,
@@ -31,6 +28,9 @@ func main() {
 
   // Get Documents
   //controllers.GetDocuments()
+
+  //var id string
+  //id = "5b269f93d4f487ed90ed93673203472d"
 
   // Get Document by Id
   //controllers.GetDocumentById(id)
